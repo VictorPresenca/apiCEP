@@ -1,0 +1,7 @@
+{
+  "name": "apiCEP",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

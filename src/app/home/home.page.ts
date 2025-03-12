@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CepService } from '../services/cep.service';
 
 @Component({
   selector: 'app-home',
@@ -8,6 +9,21 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  cep: string = '';
+  resultado: any = null;
 
+  constructor(private cepService: CepService) {}
+
+  buscarCep() {
+    if (this.cep && this.cep.length === 8) {
+      this.cepService.buscarCep(this.cep).subscribe(
+        (dados) => {
+          this.resultado = dados;
+        },
+        (erro) => {
+          console.error('Erro ao buscar CEP:', erro);
+        }
+      )
+    }
+  }
 }
